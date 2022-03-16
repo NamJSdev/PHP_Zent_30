@@ -12,7 +12,7 @@
             $x2 = (-$b - sqrt($delta))/(2*$a);
             echo "x2 = ".$x2."<br>";
         }
-        elseif($delta = 0){
+        elseif($delta == 0){
             echo "Phuong trinh co nghiem kep <br>";
             $x  = (-$b)/(2*$a);
             echo "x1 = x2 = ".$x."<br>";
