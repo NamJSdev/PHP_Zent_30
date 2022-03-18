@@ -6,5 +6,7 @@
             echo "Fizz <br>";
         elseif($i % 5 == 0)
             echo "Buzz <br>";
+        else
+            echo $i."<br>";
     }
 ?>
