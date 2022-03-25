@@ -1,6 +1,6 @@
 <?php
-    session_start();
-    $products = $_SESSION['products'];
+  include_once('cart_data.php');
+  session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,21 +24,26 @@
         <th>Số lượng</th>
         <th>Giá bán</th>
         <th>Ảnh sản phẩm</th>
+        <th>Action</th>
       </tr>
     </thead>
     <tbody>
-        <?php foreach($products as $product){?>
+        <?php foreach($products_arr as $key => $product){?>
         <tr>
           <td><?= $product['product_code'] ?></td>
           <td><?= $product['product_name'] ?></td>
-          <td><?= $product['product_amount'] ?></td>
+          <td><?= $product['product_stock'] ?></td>
           <td><?= number_format($product['product_price']); ?></td>
-          <td> <img width="100px" height="100px" src="<?= $product['product_images'] ?>" alt=""> </td>
+          <td> <img width="100px" height="100px" src="<?= $product['product_image'] ?>" alt=""> </td>
+          <td><a class="btn btn-primary" href="addToCart.php?id=<?= $key?>">Add</a></td>
         </tr>
         <?php }?>
     </tbody>
   </table>
+  <a class="btn btn-primary" href="cart_product.php">Đến giỏ hàng</a>
 </div>
-
+<script>
+  
+</script>
 </body>
 </html>
