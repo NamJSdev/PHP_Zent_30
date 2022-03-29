@@ -52,8 +52,7 @@
         }
 
     }
-
-    $upload = uploadFile('avatar', 'images', array('jpg','jpeg','png','gif'),1,true);
+    $upload = uploadFile('avatar', 'images', array('jpg','jpeg','png','gif'),5,true);
     $_SESSION['upload_status'] = $upload;
     header('Location: uploadfile.php');
 ?>
