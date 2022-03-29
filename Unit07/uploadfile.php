@@ -31,7 +31,7 @@
             </div>
             <?php } ?>
             <?php if(isset($_SESSION['upload_status']) && $_SESSION['upload_status'][0] == true){ ?>
-                <div class="alert alert_danger" role="alert">
+                <div class="alert alert-danger" role="alert">
                     Đường dẫn file sau khi upload: <?= $_SESSION['upload_status'][1]; ?>
                 </div>
             <?php
