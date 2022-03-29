@@ -9,7 +9,7 @@
         $types  = "";
         if(is_array($allowtypes)){
             foreach($allowtypes as $key => $type){
-                $type .= $type.",";
+                $types .= $type.",";
             }
         }
         $types = trim($types,',');
@@ -26,7 +26,7 @@
 
         $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
         if(!in_array($imageFileType,$allowtypes)){
-            $errors[] = "Chỉ được upload các định dạng".$types;
+            $errors[] = "Chỉ được upload các định dạng : ".$types;
             $upload_status = false;
         }
 
