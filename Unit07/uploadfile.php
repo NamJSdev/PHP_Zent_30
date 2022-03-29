@@ -21,7 +21,7 @@
         </form>
         <br>
         <?php if(isset($_SESSION['upload_status']) && $_SESSION['upload_status'][0] == false){?>
-            <div class="alert alert_danger" role="alert">
+            <div class="alert alert-danger" role="alert">
                 <?php 
                     foreach($_SESSION['upload_status'][1] as $error){
                         echo "<p> - ".$error."</p>";
