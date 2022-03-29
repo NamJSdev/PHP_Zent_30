@@ -30,7 +30,7 @@
             $upload_status = false;
         }
 
-        if($_FILES($input_name)["size"] > $max_size*1024*1024){
+        if($_FILES[$input_name]["size"] > $max_size*1024*1024){
             $errors[] = "Không được upload ảnh lớn hơn $max_size (MB).";
             $upload_status = false;
         }
