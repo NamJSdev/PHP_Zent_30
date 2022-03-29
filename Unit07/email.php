@@ -30,8 +30,8 @@
         $mail->Port       = 587; // cổng để gửi mail
         $mail->SMTPSecure = "tls"; //Phương thức mã hóa thư - ssl hoặc tls
         $mail->SMTPAuth   = true; //Xác thực SMTP
-        $mail->Username   = "namnxtank@gmail.com"; // Tên đăng nhập tài khoản Gmail
-        $mail->Password   = "12345"; //Mật khẩu của gmail
+        $mail->Username   = "nam.js.dev@gmail.com"; // Tên đăng nhập tài khoản Gmail
+        $mail->Password   = "12345Nam@"; //Mật khẩu của gmail
         $mail->SetFrom("nam.js.dev@gmail.com", "NamJS"); // Thông tin người gửi
         $mail->AddReplyTo("nam.js.dev@gmail.com","NamJS");// Ấn định email sẽ nhận khi người dùng reply lại.
         $mail->AddAddress($email_recive, $name);//Email của người nhận
