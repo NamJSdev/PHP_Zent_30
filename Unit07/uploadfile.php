@@ -16,7 +16,7 @@
         <h3>Upload ảnh đại diện</h3>
         <form action="upload.php" method="POST" role="form" enctype="multipart/form-data">
             <p>Chọn ảnh đại diện:</p>
-            <input type="file" name="avatar"><br>
+            <input type="file" name="avatar[]" multiple="multiple"><br>
             <button type="submit" value="submit" class="btn btn-primary" name="btn_login">Upload Ảnh</button>
         </form>
         <br>

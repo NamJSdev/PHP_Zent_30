@@ -1,5 +1,7 @@
 <?php
     session_start();
+    require_once('connection.php');
+    $data = $_POST;
     function uploadFile($input_name, $target_dir, $allowtypes, $max_size, $override){
         $upload_status = true;
         $target_file = $target_dir."/" . basename($_FILES[$input_name]["name"]);
@@ -51,22 +53,24 @@
         }
 
     }
-    //upload muti
-    function uploadMuti($input_name,$target_dir){
-        if(is_array($_FILES[$input_name]['name'])){
-            $numberFile = count($_FILES[$input_name]['name']);
-            for($i = 0; $i < $numberFile; $i++){
-                $path = $target_dir .'/'. $_FILES[$input_name]['name'][$i];
-                move_uploaded_file($_FILES[$input_name]['tmp_name'][$i],$path);
-            }
-        }
-        else{
-            $path = $target_dir .'/'. $_FILES[$input_name]['name'];
-            move_uploaded_file($_FILES[$input_name]['tmp_name'],$path);
-        }
+    $upload = uploadFile('thumbnail', 'images', array('jpg','jpeg','png','gif'),5,true);
+    $_SESSION['upload_status'] = $upload;
+    
+    date_default_timezone_set('Asia/Ho_Chi_Minh');
+    $time_now = date('Y-m-d H:i:s');
+    $thumbnail = $_SESSION['upload_status']['1'];
+    if(isset($_SESSION['upload_status']) && $_SESSION['upload_status'][0] == true){
+        $sql = "INSERT INTO posts(title,short_content,thumbnail,category_id,content,created_at) VALUES('".$data['title']."','".$data['description']."','".$thumbnail."','".$data['category_id']."','".$data['content']."','".$time_now."')";
+        unset($_SESSION['upload_status']);
     }
-    uploadMuti('avatar','images');
-    // $upload = uploadFile('avatar', 'images', array('jpg','jpeg','png','gif'),5,true);
-    // $_SESSION['upload_status'] = $upload;
-    // header('Location: uploadfile.php');
+    else{
+        header("Location: post_add.php");
+    }
+    $status = $conn -> query($sql);
+    if($status == true){
+        header("Location: posts.php");
+    }
+    else{
+        header("Location: post_add.php");
+    }
 ?>

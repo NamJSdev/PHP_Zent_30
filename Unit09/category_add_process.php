@@ -1,5 +1,7 @@
 <?php
     session_start();
+    require_once('connection.php');
+    $data = $_POST;
     function uploadFile($input_name, $target_dir, $allowtypes, $max_size, $override){
         $upload_status = true;
         $target_file = $target_dir."/" . basename($_FILES[$input_name]["name"]);
@@ -49,24 +51,23 @@
         }else{
             return array(false,$errors);
         }
-
     }
-    //upload muti
-    function uploadMuti($input_name,$target_dir){
-        if(is_array($_FILES[$input_name]['name'])){
-            $numberFile = count($_FILES[$input_name]['name']);
-            for($i = 0; $i < $numberFile; $i++){
-                $path = $target_dir .'/'. $_FILES[$input_name]['name'][$i];
-                move_uploaded_file($_FILES[$input_name]['tmp_name'][$i],$path);
-            }
-        }
-        else{
-            $path = $target_dir .'/'. $_FILES[$input_name]['name'];
-            move_uploaded_file($_FILES[$input_name]['tmp_name'],$path);
-        }
+    $upload = uploadFile('avatar', 'images', array('jpg','jpeg','png','gif'),5,true);
+    $_SESSION['upload_status'] = $upload;
+    
+    $avatar = $_SESSION['upload_status']['1'];
+    if(isset($_SESSION['upload_status']) && $_SESSION['upload_status'][0] == true){
+        $sql = "INSERT INTO categories(cate_name,description,avatar) VALUES('".$data['name']."','".$data['description']."','".$avatar."');";
+        unset($_SESSION['upload_status']);
     }
-    uploadMuti('avatar','images');
-    // $upload = uploadFile('avatar', 'images', array('jpg','jpeg','png','gif'),5,true);
-    // $_SESSION['upload_status'] = $upload;
-    // header('Location: uploadfile.php');
+    else{
+        header("Location: category_add.php");
+    }
+    $status = $conn -> query($sql);
+    if($status == true){
+        header("Location: index.php");
+    }
+    else{
+        header("Location: category_add.php");
+    }
 ?>
