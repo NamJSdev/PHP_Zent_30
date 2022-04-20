@@ -8,19 +8,6 @@
     require('./Category.php');
     $category = new Category();
     $categories = $category->get();
-    // var_dump($categories);
-    // die();
-    // $categories = select("categories");
-    // require_once('connection.php');
-
-    // $sql = "SELECT * FROM categories";
-    // $results = $conn -> query($sql);
-
-    // $categories = array();
-
-    // while($row = $results -> fetch_assoc()){
-    //     $categories[] = $row;
-    // }
 ?>
 <div class="container">
     <h3 class="text-center">--- CATEGORIES ---</h3>
