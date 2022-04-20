@@ -4,16 +4,10 @@
     include_once('layouts/sidebar.php');
 ?>
 <?php
-    require_once('connection.php');
-
-    $sql = "SELECT * FROM posts";
-    $results = $conn -> query($sql);
-
-    $posts = array();
-
-    while($row = $results -> fetch_assoc()){
-        $posts[] = $row;
-    }
+    require('./Query.php');
+    require('./Post.php');
+    $data = new Post();
+    $posts = $data->get();
 ?>
 <div class="container">
     <h3 class="text-center">--- POSTS ---</h3>
