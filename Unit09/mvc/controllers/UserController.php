@@ -1,10 +1,7 @@
 <?php
-    require('models/User.php');
     class UserController{
         public function index(){
-            $model = new User();
-            $users = $model->get();
-            require_once ('views/users/list.php');
+            echo 'user controller index';
         }
         public function edit(){
             echo 'edit user controller index';
