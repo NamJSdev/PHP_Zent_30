@@ -1,6 +1,6 @@
 <?php
     class Query{
-        private $conn;
+        protected $conn;
         function __construct()
         {
             $severname = "localhost";

@@ -18,7 +18,8 @@
         
         public function get(){
             return $this->select($this->table);
-        }   
+        } 
+
         function select($tableName){
             $sql = "SELECT * FROM " . $tableName;
             $results = $this->conn->query($sql);

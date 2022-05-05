@@ -81,8 +81,35 @@
                 return array(false,$errors);
             }
         }
+
+        public function edit(){
+            $id = $_GET['id'];
+            $category = $this->model->getCatById($id);
+            require_once "views/categories/edit.php";
+        }
+        
+        public function update(){
+             $data = $_POST;
+             $result = $this->model->updateCate($data);
+
+            if ($result) {
+                setcookie('msg', 'Updated successful!', time() + 5);
+                header("Location: index.php?mod=category&action=index");
+            } else {
+                setcookie('error', 'Something went wrong!', time() + 5);
+                header('Location: index.php?mod=category&action=edit&id=' . $data['id']);
+            }
+        }
         public function delete(){
-            echo 'delete category controller index';
+            $id = $_GET['id'];
+            $result = $this->model->delete($id);
+            if ($result) {
+                setcookie('msg', 'Deleted successful!', time() + 2);
+            } else {
+                setcookie('error', 'Something went wrong!', time() + 2);
+            }
+            header("Location: index.php?mod=category&action=index");
+
         }
     }
 ?>

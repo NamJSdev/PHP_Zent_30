@@ -5,7 +5,7 @@
 ?>
 <div class="container">
     <h3 class="text-center">--- POSTS ---</h3>
-    <a href="post_add.php" class="btn btn-primary">Add New POST</a>
+    <a href="index.php?mod=post&action=create" class="btn btn-primary">Add New POST</a>
     <table class="table">
         <thead>
             <th>Title</th>

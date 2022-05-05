@@ -5,13 +5,15 @@
 ?>
 <div class="container">
     <h3 class="text-center">--- CATEGORIES ---</h3>
-    <a href="category_add.php" class="btn btn-primary">Add New Category</a>
+    <a href="index.php?mod=category&action=create" class="btn btn-primary">Add New Category</a>
     <table class="table">
         <thead>
             <th>ID</th>
             <th>Name</th>
             <th>Thumbnail</th>
+            <th>slug</th>
             <th>Description</th>
+            <th>Created at</th>
             <th>Action</th>
             </thead>
     <?php foreach($categories as $key => $cate){ ?>
@@ -21,7 +23,9 @@
             <td>
                 <img class="img-fluid" src="<?= $cate['avatar'] ?>" width="100px">
             </td>
+            <td><?= $cate['slug'] ?></td>
             <td><?= $cate['description'] ?></td>
+            <td><?= $cate['created_at'] ?></td>
             <td>
                 <a href="category_edit.php?id=<?= $cate['id'] ?>" class="btn btn-success">Edit</a>
                 <a href="category_delete.php?id=<?= $cate['id'] ?>" class="btn btn-danger">Delete</a>

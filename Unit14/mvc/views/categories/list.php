@@ -27,8 +27,8 @@
             <td><?= $cate['description'] ?></td>
             <td><?= $cate['created_at'] ?></td>
             <td>
-                <a href="category_edit.php?id=<?= $cate['id'] ?>" class="btn btn-success">Edit</a>
-                <a href="category_delete.php?id=<?= $cate['id'] ?>" class="btn btn-danger">Delete</a>
+                <a href="index.php?mod=category&action=edit&id=<?= $cate['id'] ?>" class="btn btn-success">Edit</a>
+                <a href="index.php?mod=category&action=delete&id=<?= $cate['id'] ?>" class="btn btn-danger">Delete</a>
             </td>
         </tr>
     <?php } ?>
