@@ -13,7 +13,7 @@
         </div>
         <div class="form-group">
             <label for="">Name</label>
-            <input type="text" class="form-control" id="" placeholder="" name="name" value="<?= $category['cate_name'] ?>">
+            <input type="text" class="form-control" id="" placeholder="" name="cate_name" value="<?= $category['cate_name'] ?>">
         </div>
         <div class="form-group">
             <label for="">Description</label>

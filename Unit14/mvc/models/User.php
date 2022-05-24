@@ -10,6 +10,9 @@
             $user = $result->fetch_assoc();
 
             return $user;
+        }public function addUser($name,$email,$password){
+            $query = "INSERT INTO users(name,email,password) VALUES('".$name."','".$email."','".$password."')";
+            $result = $this->conn->query($query);
         }
     }
 ?>
