@@ -16,12 +16,55 @@
                 exit();
             }
         }
-        function select($columns ="*"){
-            $sql = "SELECT * FROM " . $this->table;
+        public function selectSlider($columns ='*'){
+            $sql = "SELECT * FROM " . $this->table . " LIMIT 3";
             $results = $this->conn->query($sql);
             $data = array();
-        
             while($row = $results->fetch_assoc()){
+                $data[] = $row;
+            }
+            return $data;
+        }
+        public function selectRandom($columns ='*'){
+            $sql = "SELECT * FROM " . $this->table . " ORDER BY RAND() LIMIT 3";
+            $results = $this->conn->query($sql);
+            $data = array();
+            while($row = $results->fetch_assoc()){
+                $data[] = $row;
+            }
+            return $data;
+        }
+        public function select($columns = '*', $page='1', $limit=null){
+            if ($columns == '*') {
+                $query = "SELECT * FROM " . $this->table;
+                if($limit != null){
+                    $offset = ($page-1)*$limit;
+                    $query .=" LIMIT ".$limit." OFFSET ".$offset;
+                }
+            }elseif (is_array($columns)) {
+                $sub_string = '';
+                foreach ($columns as $i =>$column) {
+                    $sub_string .= $column;
+        
+                    if ($i + 1 != count($columns)) {
+                        $sub_string .= ',';
+                    }
+                }
+                // SELECT id,name,description,thumbnail FROM users;
+                $query = "SELECT " . $sub_string . " FROM " . $this->table;
+                if($limit != null){
+                    $offset = ($page-1)*$limit + 1;
+                    $query .=" LIMIT ".$limit." OFFSET ".$offset;
+                }
+            }else{
+                exit();
+            }
+            $result = $this->conn->query($query);
+        
+            // Buoc 3
+            // Tạo 1 mảng để chứa dữ liệu
+            $data = array();
+            while($row = $result->fetch_assoc()) { 
                 $data[] = $row;
             }
             return $data;

@@ -13,45 +13,23 @@
           <div class="col-md-6 ml-auto">
             <div class="row">
               <div class="col-md-7">
-                <h3>Latest Post</h3>
+                <h3>Bài Viết Mới</h3>
                 <div class="post-entry-sidebar">
                   <ul>
+                  <?php foreach($postsThirt as $key => $post){ ?>
                     <li>
-                      <a href="">
-                        <img src="images/img_6.jpg" alt="Image placeholder" class="mr-4">
+                      <a href="index.php?mod=postClient&action=detail&id=<?= $post['id'] ?>">
+                        <img src="<?= $post['avatar'] ?>" alt="Image placeholder" class="mr-4">
                         <div class="text">
-                          <h4>How to Find the Video Games of Your Youth</h4>
+                          <h4><?= $post['short_content'] ?></h4>
                           <div class="post-meta">
-                            <span class="mr-2">March 15, 2018 </span> &bullet;
+                            <span class="mr-2"><?= $post['created_at'] ?></span> &bullet;
                             <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
                           </div>
                         </div>
                       </a>
                     </li>
-                    <li>
-                      <a href="">
-                        <img src="images/img_3.jpg" alt="Image placeholder" class="mr-4">
-                        <div class="text">
-                          <h4>How to Find the Video Games of Your Youth</h4>
-                          <div class="post-meta">
-                            <span class="mr-2">March 15, 2018 </span> &bullet;
-                            <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
-                          </div>
-                        </div>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="">
-                        <img src="images/img_4.jpg" alt="Image placeholder" class="mr-4">
-                        <div class="text">
-                          <h4>How to Find the Video Games of Your Youth</h4>
-                          <div class="post-meta">
-                            <span class="mr-2">March 15, 2018 </span> &bullet;
-                            <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
-                          </div>
-                        </div>
-                      </a>
-                    </li>
+                  <?php } ?>
                   </ul>
                 </div>
               </div>
@@ -63,22 +41,17 @@
                   <h3>Quick Links</h3>
                   <ul class="list-unstyled">
                     <li><a href="#">About Us</a></li>
-                    <li><a href="#">Travel</a></li>
-                    <li><a href="#">Adventure</a></li>
-                    <li><a href="#">Courses</a></li>
-                    <li><a href="#">Categories</a></li>
+                    <li><a href="#">Liên Hệ</a></li>
                   </ul>
                 </div>
 
                 <div class="mb-5">
                   <h3>Social</h3>
                   <ul class="list-unstyled footer-social">
-                    <li><a href="#"><span class="fa fa-twitter"></span> Twitter</a></li>
+                    <li><a href="#"><span class="fa fa-github"></span> Github</a></li>
                     <li><a href="#"><span class="fa fa-facebook"></span> Facebook</a></li>
                     <li><a href="#"><span class="fa fa-instagram"></span> Instagram</a></li>
-                    <li><a href="#"><span class="fa fa-vimeo"></span> Vimeo</a></li>
                     <li><a href="#"><span class="fa fa-youtube-play"></span> Youtube</a></li>
-                    <li><a href="#"><span class="fa fa-snapchat"></span> Snapshot</a></li>
                   </ul>
                 </div>
               </div>
@@ -92,9 +65,9 @@
               Copyright &copy;
               <script data-cfasync="false"
                 src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-              <script>document.write(new Date().getFullYear());</script> All Rights Reserved | This template is made
-              with <i class="fa fa-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com"
-                target="_blank">Colorlib</a>
+              <script>document.write(new Date().getFullYear());</script> All Rights Reserved | This blog is made
+              with <i class="fa fa-heart text-danger" aria-hidden="true"></i> by <a href="#"
+                target="_blank">NamJS</a>
               <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
             </p>
           </div>

@@ -35,7 +35,13 @@
             $data = $_POST;
             date_default_timezone_set('Asia/Ho_Chi_Minh');
             $data['created_at'] = date('Y-m-d H:i:s');
-            $data['avatar'] = $this->uploadFile('avatar', '../images', array('jpg','jpeg','png','gif'),100,true)[1];
+            $data['avatar'] = $this->uploadFile('avatar', '../images', array('jpg','jpeg','png','gif'),100,true);
+            if($data['avatar'][0]==true){
+                $data['avatar'] = $data['avatar'][1];
+            }
+            else{
+                unset($data['avatar']);
+            }
             $id = $data['id'];
             unset($data['id']);
              $result = $this->model->update($data,['id'=>$id]);

@@ -19,6 +19,10 @@
             <input type="text" class="form-control" id="" placeholder="" name="mobile" value="<?= $users['mobile'] ?>">
         </div>
         <div class="form-group">
+            <label for="">Info</label>
+            <input type="text" class="form-control" id="" placeholder="" name="info" value="<?= $users['info'] ?>">
+        </div>
+        <div class="form-group">
             <label for="">Email</label>
             <input type="text" class="form-control" id="" placeholder="" name="email" value="<?= $users['email'] ?>">
         </div>

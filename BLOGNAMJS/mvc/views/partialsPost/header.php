@@ -1,3 +1,8 @@
+<?php
+    require('models/Category.php');
+    $model = new Category();
+    $categories = $model->select();
+?>
 <!doctype html>
 <html lang="en">
 
@@ -21,26 +26,24 @@
 </head>
 
 <body>
-
-
   <div class="wrap">
-
+  
     <header role="banner">
       <div class="top-bar">
         <div class="container">
           <div class="row">
             <div class="col-9 social">
-              <a href="#"><span class="fa fa-twitter"></span></a>
-              <a href="#"><span class="fa fa-facebook"></span></a>
-              <a href="#"><span class="fa fa-instagram"></span></a>
-              <a href="#"><span class="fa fa-youtube-play"></span></a>
+              <a href="index.php?mod=auth&action=login" target="__blank"><span class="fa fa-user" title="Admin"></span></a>
+              <a href="https://www.facebook.com/profile.php?id=100017603470791" target="__blank"><span class="fa fa-facebook" title="FaceBook"></span></a>
+              <a href="https://github.com/NamJSdev" target="__blank"><span class="fa fa-github" title="Github"></span></a>
+              <a href="#" target="__blank"><span class="fa fa-youtube-play" title="YouTube"></span></a>
             </div>
             <div class="col-3 search-top">
               <!-- <a href="#"><span class="fa fa-search"></span></a> -->
-              <form action="#" class="search-top-form">
+              <!-- <form action="#" class="search-top-form">
                 <span class="icon fa fa-search"></span>
-                <input type="text" id="s" placeholder="Type keyword to search...">
-              </form>
+                <input type="text" id="s" placeholder="Tìm kiếm ...">
+              </form> -->
             </div>
           </div>
         </div>
@@ -69,19 +72,17 @@
                 <a class="nav-link dropdown-toggle" href="category.html" id="dropdown05" data-toggle="dropdown"
                   aria-haspopup="true" aria-expanded="false">Danh mục</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown05">
-                  <a class="dropdown-item" href="category.html">Lifestyle</a>
-                  <a class="dropdown-item" href="category.html">Food</a>
-                  <a class="dropdown-item" href="category.html">Adventure</a>
-                  <a class="dropdown-item" href="category.html">Travel</a>
-                  <a class="dropdown-item" href="category.html">Business</a>
+                  <?php foreach($categories as $cate){ ?>
+                    <a class="dropdown-item" href="#"><?= $cate['cate_name']; ?></a>
+                  <?php } ?>
                 </div>
 
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="about.html">Lời nhắn</a>
+                <a class="nav-link" href="index.php?mod=postClient&action=about">About Us</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="contact.html">Liên Hệ</a>
+                <a class="nav-link" href="index.php?mod=postClient&action=contact">Liên Hệ</a>
               </li>
             </ul>
 

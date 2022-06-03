@@ -1,6 +1,5 @@
 <?php
     require('controllers/BaseController.php');
-    class FontEndController extends BaseController{
-   
+    class FrontEndController extends BaseController{
     }
 ?>

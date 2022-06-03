@@ -10,10 +10,8 @@
             $this->model = new Category();
         }
         public function index(){
-            $model = new Category();
-            $categories = $model->select();
+            $categories = $this->model->select();
             $this->view("categories/list.php",['categories'=>$categories]);
-            require_once ('views/categories/list.php');
         }
         public function create(){
             require_once ('views/categories/create.php');
@@ -35,7 +33,15 @@
         
         public function update(){
             $data = $_POST;
-            $data['avatar'] = $this->uploadFile('avatar', '../images', array('jpg','jpeg','png','gif'),100,true)[1];
+            
+            $data['slug'] = $this->createSlug($data['cate_name']);
+            $data['avatar'] = $this->uploadFile('avatar', '../images', array('jpg','jpeg','png','gif'),100,true);
+            if($data['avatar'][0]==true){
+                $data['avatar'] = $data['avatar'][1];
+            }
+            else{
+                unset($data['avatar']);
+            }
             $id = $data['id'];
             date_default_timezone_set('Asia/Ho_Chi_Minh');
             $data['created_at'] = date('Y-m-d H:i:s');

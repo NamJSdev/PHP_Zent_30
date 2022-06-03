@@ -13,8 +13,12 @@
                         Posts
                     </a>
                     <a class="nav-link collapsed" href="index.php?mod=user&action=index">
-                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                        <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
                         Users
+                    </a>
+                    <a class="nav-link collapsed" href="index.php?mod=comment&action=index">
+                        <div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>
+                        Comments
                     </a>
                 </div>
             </div>

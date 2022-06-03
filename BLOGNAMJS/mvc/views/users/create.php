@@ -16,6 +16,10 @@
             <input type="text" class="form-control" id="" placeholder="" name="email">
         </div>
         <div class="form-group">
+            <label for="">Info</label>
+            <input type="text" class="form-control" id="" placeholder="" name="info">
+        </div>
+        <div class="form-group">
             <label for="">Phone Number</label>
             <input type="text" class="form-control" id="" placeholder="" name="mobile">
         </div><br>
