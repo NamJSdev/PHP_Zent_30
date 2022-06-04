@@ -13,8 +13,7 @@
             $this->model = new Post();
         }
         public function index(){
-            $model = new Post();
-            $posts = $model->select();
+            $posts = $this->model->select();
             $this->view("posts/list.php",['posts'=>$posts]);
         }
         public function create(){

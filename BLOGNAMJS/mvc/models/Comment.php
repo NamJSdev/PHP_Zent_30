@@ -17,5 +17,14 @@
             }
             return $data;
         }
+        function getAmountCommentByIdPost($postId){
+            $query = "SELECT * FROM comments WHERE post_id = " . $postId;
+            $results = $this->conn->query($query);
+            $i = 0;
+            while($results->fetch_assoc()){
+                $i++;
+            }
+            return $i;
+        }
     }
 ?>

@@ -1,8 +1,3 @@
-<?php
-    require('models/Category.php');
-    $model = new Category();
-    $categories = $model->select();
-?>
 <!doctype html>
 <html lang="en">
 
@@ -23,11 +18,76 @@
 
   <!-- Theme Style -->
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    .wrap {
+      max-width: 100%;
+    }
+    .back-to-top {
+      position: fixed;
+      right: 50px;
+      top: 87%;
+      color: #fff;
+      background-color: blue;
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22pt;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 20;
+    }
+    .back-to-top:hover {
+      transition: background-color 0.3s;
+      background-color: #14bdef;
+      border: 1px solid;
+      border-color: greenyellow;
+    }
+    #btnZaloChat {
+        width: 45px;
+        height: 45px;
+        display: flex;
+        background: #028fe3;
+        border-radius: 50%;
+        background: rgba(2, 143, 227, 1);
+        box-shadow: 0 0 0 0 rgb(2 143 227);
+        position: fixed;
+        right: 50px;
+        top: 75%;
+        bottom: 50px;
+        overflow: hidden;
+        z-index: 200;
+        transform: scale(1);
+        animation: pulse-blue 2s infinite;
+      }
+      @media (max-width: 767px) {
+        .back-to-top,#btnZaloChat{
+          right: 30px;
+        }
+      }
+      @keyframes pulse-blue {
+        0% {
+          transform: scale(0.95);
+          box-shadow: 0 0 0 0 rgb(2 143 227 / 70%);
+        }
+        70% {
+          transform: scale(1);
+          box-shadow: 0 0 0 10px rgb(2 143 227 / 0%);
+        }
+        100% {
+          transform: scale(0.95);
+          box-shadow: 0 0 0 0 rgb(2 143 227 / 0%);
+        }
+    }
+  </style>
 </head>
 
 <body>
   <div class="wrap">
-  
+  <!-- <i class="back-to-top d"></i> -->
+  <span class=" back-to-top fa fa-angle-up"></span>
+  <a href="https://zalo.me/84392559639" target="_blank" id="btnZaloChat" class="btn-zalo-chat"><img class="cpslazy loaded" data-src="https://cellphones.com.vn/media/icons/icon-zalo.png" data-ll-status="loaded" src="https://cellphones.com.vn/media/icons/icon-zalo.png"></a>
     <header role="banner">
       <div class="top-bar">
         <div class="container">
@@ -38,12 +98,11 @@
               <a href="https://github.com/NamJSdev" target="__blank"><span class="fa fa-github" title="Github"></span></a>
               <a href="#" target="__blank"><span class="fa fa-youtube-play" title="YouTube"></span></a>
             </div>
-            <div class="col-3 search-top">
-              <!-- <a href="#"><span class="fa fa-search"></span></a> -->
-              <!-- <form action="#" class="search-top-form">
-                <span class="icon fa fa-search"></span>
-                <input type="text" id="s" placeholder="Tìm kiếm ...">
-              </form> -->
+            <div class="col-3 text-white">
+              <!-- <div class="row">
+                <span class="fa fa-envelope col d-flex justify-content-end align-items-center pr-0"></span>
+                <p class="col mb-0 w-100">nam.js.dev@gmail.com</p>
+              </div> -->
             </div>
           </div>
         </div>
@@ -78,9 +137,9 @@
                 </div>
 
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a class="nav-link" href="index.php?mod=postClient&action=about">About Us</a>
-              </li>
+              </li> -->
               <li class="nav-item">
                 <a class="nav-link" href="index.php?mod=postClient&action=contact">Liên Hệ</a>
               </li>

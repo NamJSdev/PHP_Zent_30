@@ -1,9 +1,3 @@
-
-<?php
-    // require('models/User.php');
-    // $model = new User();
-    // $users = $model->select();
-?>
 <div class="col-md-12 col-lg-4 sidebar">
 <!-- END sidebar-box -->
 <div class="sidebar-box">
@@ -48,31 +42,11 @@
 <div class="sidebar-box">
     <h3 class="heading">Danh mục</h3>
     <ul class="categories">
-    <li><a href="#">Food <span>(12)</span></a></li>
-    <li><a href="#">Travel <span>(22)</span></a></li>
-    <li><a href="#">Lifestyle <span>(37)</span></a></li>
-    <li><a href="#">Business <span>(42)</span></a></li>
-    <li><a href="#">Adventure <span>(14)</span></a></li>
+        <?php foreach($categories as $cate){?>
+        <li><a href="#"><?= $cate['cate_name'] ?> <span>(12)</span></a></li>
+        <?php } ?>
     </ul>
 </div>
 <!-- END sidebar-box -->
-
-<div class="sidebar-box">
-    <h3 class="heading">Tags</h3>
-    <ul class="tags">
-    <li><a href="#">Travel</a></li>
-    <li><a href="#">Adventure</a></li>
-    <li><a href="#">Food</a></li>
-    <li><a href="#">Lifestyle</a></li>
-    <li><a href="#">Business</a></li>
-    <li><a href="#">Freelancing</a></li>
-    <li><a href="#">Travel</a></li>
-    <li><a href="#">Adventure</a></li>
-    <li><a href="#">Food</a></li>
-    <li><a href="#">Lifestyle</a></li>
-    <li><a href="#">Business</a></li>
-    <li><a href="#">Freelancing</a></li>
-    </ul>
-</div>
 </div>
 <!-- END sidebar -->

@@ -17,7 +17,7 @@
             }
         }
         public function selectSlider($columns ='*'){
-            $sql = "SELECT * FROM " . $this->table . " LIMIT 3";
+            $sql = "SELECT * FROM " . $this->table . " ORDER BY id DESC LIMIT 3";
             $results = $this->conn->query($sql);
             $data = array();
             while($row = $results->fetch_assoc()){
@@ -25,6 +25,11 @@
             }
             return $data;
         }
+        // public function selectOneForCate($columns ='*',$cate_name){
+        //     $sql = "SELECT * FROM " . $this->table . " WHERE category_name = "." ' " . $cate_name . " ' ";
+        //     $result = $this->conn->query($sql);
+        //     return $result->fetch_assoc();
+        // }
         public function selectRandom($columns ='*'){
             $sql = "SELECT * FROM " . $this->table . " ORDER BY RAND() LIMIT 3";
             $results = $this->conn->query($sql);
@@ -36,7 +41,7 @@
         }
         public function select($columns = '*', $page='1', $limit=null){
             if ($columns == '*') {
-                $query = "SELECT * FROM " . $this->table;
+                $query = "SELECT * FROM " . $this->table . " ORDER BY id DESC";
                 if($limit != null){
                     $offset = ($page-1)*$limit;
                     $query .=" LIMIT ".$limit." OFFSET ".$offset;

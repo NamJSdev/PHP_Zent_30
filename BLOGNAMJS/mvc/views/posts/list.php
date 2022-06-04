@@ -8,15 +8,16 @@
     <a href="index.php?mod=post&action=create" class="btn btn-primary">Add New POST</a>
     <table class="table">
         <thead>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Thumbnail</th>
-            <th>Category</th>
-            <th>Author</th>
-            <th>Created</th>
-            <th>Updated</th>
-            <th>Action</th>
-            </thead>
+            <th class="text-center">Title</th>
+            <th class="text-center">Description</th>
+            <th class="text-center">Thumbnail</th>
+            <th class="text-center">Category</th>
+            <th class="text-center">Author</th>
+            <th class="text-center">Amount CMT</th>
+            <th class="text-center">Created</th>
+            <th class="text-center">Updated</th>
+            <th class="text-center">Action</th>
+        </thead>
     <?php foreach($posts as $post){ ?>
         <tr>
             <td><?= $post['title'] ?></td>
@@ -24,11 +25,12 @@
             <td>
                 <img class="img-fluid" src="<?= $post['avatar'] ?>" width="100px">
             </td>
-            <td><?= $post['category_name'] ?></td>
-            <td><?= $post['user_name'] ?></td>
-            <td><?= $post['created_at'] ?></td>
-            <td><?= $post['updated_at'] ?></td>
-            <td>
+            <td class="text-center"><?= $post['category_name'] ?></td>
+            <td class="text-center"><?= $post['user_name'] ?></td>
+            <td class="text-center"><?= $post['cmt_amount']?></td>
+            <td class="text-center"><?= $post['created_at'] ?></td>
+            <td class="text-center"><?= $post['updated_at'] ?></td>
+            <td class="text-center">
                 <a href="index.php?mod=post&action=edit&id=<?= $post['id'] ?>" class="btn btn-success">Edit</a>
                 <a href="index.php?mod=post&action=delete&id=<?= $post['id'] ?>" class="btn btn-danger">Delete</a>
             </td>

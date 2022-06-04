@@ -23,8 +23,7 @@
                         <div class="text">
                           <h4><?= $post['short_content'] ?></h4>
                           <div class="post-meta">
-                            <span class="mr-2"><?= $post['created_at'] ?></span> &bullet;
-                            <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
+                            <span class="mr-2"><?= $post['created_at'] ?></span>
                           </div>
                         </div>
                       </a>
@@ -92,9 +91,22 @@
   <script src="js/owl.carousel.min.js"></script>
   <script src="js/jquery.waypoints.min.js"></script>
   <script src="js/jquery.stellar.min.js"></script>
-
-
   <script src="js/main.js"></script>
+  <script>
+    // Back-to-top
+    $('.back-to-top').hide();
+    $('.back-to-top').click(function () {
+        $("html, body").animate({scrollTop: 0}, 500);
+    });
+    $(window).on('scroll',function(){
+        if($(this).scrollTop() > 100){
+            $('.back-to-top').fadeIn();
+        }else{
+            $('.back-to-top').fadeOut();
+        };
+
+    });
+      </script>
 </body>
 
 </html>

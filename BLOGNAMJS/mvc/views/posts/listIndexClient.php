@@ -16,7 +16,7 @@
 
                                 <span class="author mr-2"><img src="<?= $users[0]['avatar']?>" alt="<?= $users[0]['name']?>"> <?= $post['user_name'] ?></span>&bullet;
                                 <span class="mr-2"><?= $post['created_at'] ?></span> &bullet;
-                                <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
+                                <span class="ml-2"><span class="fa fa-comments"></span> <?= $post['cmt_amount'] ?></span>
 
                             </div>
                             <h3><?= $post['title'] ?></h3>
@@ -53,7 +53,7 @@
                 <div class="post-meta">
                     <span class="author mr-2"><img src="<?= $users[0]['avatar']?>" alt="<?= $post['user_name'] ?>"> <?= $post['user_name'] ?></span>&bullet;
                     <span class="mr-2"><?= $post['created_at'] ?> </span> &bullet;
-                    <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
+                    <span class="ml-2"><span class="fa fa-comments"></span> <?= $post['cmt_amount'] ?></span>
                 </div>
                 <h2><?= $post['short_content'] ?></h2>
                 </div>

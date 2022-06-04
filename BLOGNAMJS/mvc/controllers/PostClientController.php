@@ -2,6 +2,7 @@
     require('models/Post.php');
     require('models/User.php');
     require('models/Comment.php');
+    require('models/Category.php');
     require('controllers/FrontEndController.php');
     require ('library/src/Exception.php');
     require ('library/src/PHPMailer.php');
@@ -11,12 +12,13 @@
         protected $model;
         protected $modelUser;
         protected $modelCmt;
-
+        protected $modelCate;
         public function __construct()
         {
             $this->model = new Post();
             $this->modelUser = new User();
             $this->modelCmt = new Comment();
+            $this->modelCate = new Category();
         }
         
         public function index(){
@@ -28,13 +30,15 @@
             $users = $this->modelUser->select();
             $postsRandom = $this->model->selectRandom();
             $postsThirt = $this->model->selectSlider();
+            $categories = $this->modelCate->select();
             $this->view('posts/listIndexClient.php', [
                 'posts' => $posts,
                 'users' => $users,
                 'postsThirt' => $postsThirt,
                 'postsRandom' => $postsRandom,
                 'totalPage' => $totalPage,
-                'page' => $page
+                'page' => $page,
+                'categories'=>$categories
             ]);
             require_once "views/posts/listIndexClient.php";
         }
@@ -46,12 +50,16 @@
             $postsThirt = $this->model->selectSlider();
             $postsRandom = $this->model->selectRandom();
             $cmts = $this->modelCmt->getCommentByIdPost($posts['id']);
+            $data['cmt_amount'] = $this->modelCmt->getAmountCommentByIdPost($posts['id']);
+            $this->model->update($data,['id'=>$id]);
+            $categories = $this->modelCate->select();
             $this->view('posts/postDetail.php',[
                 'users' => $users,
                 'posts' => $posts,
                 'postsThirt' => $postsThirt,
                 'postsRandom' => $postsRandom,
-                'cmts' => $cmts
+                'cmts' => $cmts,
+                'categories'=>$categories
             ]);
         }
         public function add_cmt(){
@@ -61,16 +69,21 @@
             $this->modelCmt->insert($data);
             header("Location: index.php?mod=postClient&action=detail&id=".$data['post_id']);
         }
-        public function about(){
-            $users = $this->modelUser->select();
-            $postsThirt = $this->model->selectSlider();
-            $postsRandom = $this->model->selectRandom();
-            require_once "views/posts/about.php";
-        }
+        // public function about(){
+        //     $users = $this->modelUser->select();
+        //     $postsThirt = $this->model->selectSlider();
+        //     $postsOneForCate = $this->model->selectOneForCate('*','Tâm Sự DEV');
+        //     var_dump($postsOneForCate);
+        //     die();
+        //     $categories = $this->modelCate->select();
+        //     $postsRandom = $this->model->selectRandom();
+        //     require_once "views/posts/about.php";
+        // }
         public function contact(){
             $users = $this->modelUser->select();
             $postsThirt = $this->model->selectSlider();
             $postsRandom = $this->model->selectRandom();
+            $categories = $this->modelCate->select();
             require_once "views/posts/contact.php";
         }
         public function contact_feedback(){
@@ -117,6 +130,7 @@
                 $mail->AltBody = "Nội dung thư";//Nội dung rút gọn hiển thị bên ngoài thư mục thư.
                 //Tiến hành gửi email và kiểm tra lỗi
                 if(!$mail->Send()) {
+                    header("Location: index.php?mod=postClient&action=contact_feedback");
                     echo "Có lỗi khi gửi mail" .$mail -> ErrorInfo;
                     return false;
                 } else {
