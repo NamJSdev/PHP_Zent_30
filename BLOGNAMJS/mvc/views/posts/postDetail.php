@@ -16,7 +16,7 @@
 
             <!-- comments -->
             <div class="pt-5">
-              <h3 class="mb-5">6 Comments</h3>
+              <h3 class="mb-5"><?= $posts['cmt_amount'] ?> Comments</h3>
               <ul class="comment-list">
                 <?php foreach($cmts as $cmt){ ?>
                 <li class="comment">

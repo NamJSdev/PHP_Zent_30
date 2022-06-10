@@ -25,11 +25,6 @@
             }
             return $data;
         }
-        // public function selectOneForCate($columns ='*',$cate_name){
-        //     $sql = "SELECT * FROM " . $this->table . " WHERE category_name = "." ' " . $cate_name . " ' ";
-        //     $result = $this->conn->query($sql);
-        //     return $result->fetch_assoc();
-        // }
         public function selectRandom($columns ='*'){
             $sql = "SELECT * FROM " . $this->table . " ORDER BY RAND() LIMIT 3";
             $results = $this->conn->query($sql);

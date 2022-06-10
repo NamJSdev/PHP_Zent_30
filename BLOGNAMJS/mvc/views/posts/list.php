@@ -20,7 +20,7 @@
         </thead>
     <?php foreach($posts as $post){ ?>
         <tr>
-            <td><?= $post['title'] ?></td>
+            <td><a href="index.php?mod=postClient&action=detail&id=<?= $post['id'] ?>"><?= $post['title'] ?></a></td>
             <td><?= $post['short_content'] ?></td>
             <td>
                 <img class="img-fluid" src="<?= $post['avatar'] ?>" width="100px">
