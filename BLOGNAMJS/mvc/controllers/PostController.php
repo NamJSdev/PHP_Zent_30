@@ -54,7 +54,7 @@
             $id = $data['id'];
             unset($data['id']);
         
-             $result = $this->model->update($data,['id'=>$id]);
+            $result = $this->model->update($data,['id'=>$id]);
 
             if ($result) {
                 setcookie('msg', 'Updated successful!', time() + 5);
